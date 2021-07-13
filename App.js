@@ -2,50 +2,52 @@ import React from 'react';
 import {createStackNavigator} from "@react-navigation/stack";
 import {NavigationContainer} from "@react-navigation/native";
 import {Provider} from "react-redux";
-import {productStore} from './src/redux/store'
-import CatalogComponent from "./src/components/catalog.component";
-import CategoryComponent from "./src/components/category.component";
-import ProductComponent from "./src/components/product.component";
-import ThankYouComponent from "./src/components/thankyou.component";
-import {ShoppingCartIcon} from './src/components/shopping-cart-icon';
+import store from './src/redux/store'
+import {ShoppingCartIcon} from './src/components/shopping-cart/shopping-cart.component';
 import {connect} from 'react-redux';
 import {enableScreens} from 'react-native-screens';
-import checkoutComponent from './src/components/checkout.component';
-import CartComponent from './src/components/cart.component';
+import CategoryScreen from "./src/screens/CategoryScreen/category.screen";
+import CheckoutScreen from './src/screens/CheckoutScreen/checkout.screen';
+import BasketScreen from './src/screens/BasketScreen/basket.screen';
+import ProductScreen from "./src/screens/ProductScreen/product.screen";
+import ThankYouScreen from "./src/screens/ThankYouScreen/thankyou.screen";
+import HomeScreen from './src/screens/HomeScreen/home.screen';
+import * as _ from 'lodash';
 
 enableScreens(true);
-
 const StackNavigator = createStackNavigator();
-const App = () => {
 
+const App = () => {
   return (
-      <Provider store={productStore}>
-        <ConnectedIntermediateComponent />
+      <Provider store={store}>
+        <ProvidedAppComponentWithRedux />
       </Provider>
   );
-
 };
 
-const IntermediateComponent = (props) => {
+const AppComponent = (props) => {
+  const headerRight = () => <ShoppingCartIcon badge={_.get(props, 'cart.length', 0)} />
+  const options = { headerRight };
+  const screenOptions = { headerTitleAlign: 'center' };
 
   return (
     <NavigationContainer>
-      <StackNavigator.Navigator screenOptions={{headerTitleAlign: 'center'}}>
-          <StackNavigator.Screen options={{headerRight: () => ShoppingCartIcon({badge: props.cartData.length})}} name="Categories" component={CatalogComponent}/>
-          <StackNavigator.Screen options={{headerRight: () => ShoppingCartIcon({badge: props.cartData.length})}} name="Category" component={CategoryComponent}/>
-          <StackNavigator.Screen options={{headerRight: () => ShoppingCartIcon({badge: props.cartData.length})}} name="Product" component={ProductComponent}/>
-          <StackNavigator.Screen name="ThankYou" component={ThankYouComponent}/>
-          <StackNavigator.Screen name="Cart" component={CartComponent}/>
-          <StackNavigator.Screen name="CheckoutComponent" component={checkoutComponent}/>
+      <StackNavigator.Navigator screenOptions={screenOptions}>
+          <StackNavigator.Screen options={options} name="HomeScreen" component={HomeScreen}/>
+          <StackNavigator.Screen options={options} name="ProductScreen" component={ProductScreen}/>
+          <StackNavigator.Screen options={options} name="CategoryScreen" component={CategoryScreen}/>
+          <StackNavigator.Screen name="BasketScreen" component={BasketScreen}/>
+          <StackNavigator.Screen name="ThankYouScreen" component={ThankYouScreen}/>
+          <StackNavigator.Screen name="CheckoutScreen" component={CheckoutScreen}/>
       </StackNavigator.Navigator>
     </NavigationContainer>
   )
 };
 
 const mapStateToProps = (state) => ({
-  cartData: state.product.cartData,
+  cart: state.cart,
 });
 
-const ConnectedIntermediateComponent = connect(mapStateToProps)(IntermediateComponent);
+const ProvidedAppComponentWithRedux = connect(mapStateToProps)(AppComponent);
 
 export default App;

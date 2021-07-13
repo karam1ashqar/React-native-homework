@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import {View, Text, ScrollView, Button, Image, TextInput, StyleSheet, Platform} from 'react-native'
+import {View, Text, ScrollView, Button, TextInput} from 'react-native'
 import {connect} from 'react-redux';
-import {get} from 'lodash';
+import * as _ from 'lodash';
+import {styles} from './style';
 
-const CheckoutComponent = (props) => {
+const CheckoutScreen = (props) => {
     const [totalAmount, setTotalAmount] = useState(0);
     const [details, setDetails] = useState({
         firstName: '',
@@ -22,16 +23,18 @@ const CheckoutComponent = (props) => {
     
     const getTotalAmount = () => {
         let amount = 0;
-        console.log(props.productsCart)
-        get(props, 'productsCart', []).forEach((productInCart) => {
-            get(props, 'products', []).forEach((category) => {
-                if( category.id === productInCart.categoryId ) {
-                    amount += category.products[productInCart.productId].price
+        _.get(props, 'productsCart', []).forEach((productInCart) => {
+            _.get(props, 'products', []).forEach((category) => {
+                if( _.get(category, 'id') == _.get(productInCart, 'categoryId') ) {
+                    amount += _.get(category, `products[${productInCart.productId}].price`);
                 }
             })
         })
-        const couponCode = get(props, 'route.params.couponCode');
-        setTotalAmount(amount - amount * couponCode / 100);
+        const couponCode = _.get(props, 'route.params.couponCode');
+        if( couponCode ) {
+            amount = amount - (amount * couponCode / 100);
+        } 
+        setTotalAmount(amount);
     }
 
     useEffect(() => {
@@ -64,6 +67,13 @@ const CheckoutComponent = (props) => {
                         }
                         break;
                     }
+                    case 'cvv': {
+                        if( value.length !== 3 && value.length !== 4 ) {
+                            invalidDetail += `${invalidIndex !== 0 ? ', ': ''}${key}`;
+                            invalidIndex++;
+                        }
+                        break;
+                    }
                 }
             }
         })
@@ -87,7 +97,7 @@ const CheckoutComponent = (props) => {
 
     const onPurchase = () => {
         if( checkDetailsValidation() ) {
-            props.navigation.navigate('ThankYou');
+            props.navigation.navigate('ThankYouScreen');
         }
     }
 
@@ -102,27 +112,22 @@ const CheckoutComponent = (props) => {
     }
 
     return (
-        <ScrollView contentContainerStyle={styles.container}>
-            {!!totalAmount && <Text>Total amount: {totalAmount}$</Text>}
-            {Object.keys(details).map((key, index) => (
-                renderInput(key, index)
-            ))}
-            <Button style={styles.buyButton} onPress={onPurchase} title="Purchase" />
-        </ScrollView>
+        <View>
+            <ScrollView contentContainerStyle={styles.container}>
+                {!!totalAmount && <Text>Total amount: {totalAmount}$</Text>}
+                {Object.keys(details).map((key, index) => (
+                    renderInput(key, index)
+                ))}
+                <Button style={styles.buyButton} onPress={onPurchase} title="Purchase" />
+            </ScrollView>
+        </View>
+
     )
 }
 
-const styles = StyleSheet.create({
-    inputWrapper: {flexDirection: 'row', padding: 5, alignItems: 'center'},
-    container: { padding: 30},
-    textInput: { borderBottomColor: 'black', borderBottomWidth: 1, flex: 1, marginLeft: 15, color: 'black'},
-    text: { marginTop: 10},
-    buyButton: {backgroundColor: 'red', padding: 15, marginTop: 15},
-});
-
 const mapStateToProps = (state) => ({
-    productsCart: state.product.cartData,
-    products: state.catalog.data,
+    productsCart: state.cart,
+    products: state.data,
 });
 
-export default connect(mapStateToProps)(CheckoutComponent)
+export default connect(mapStateToProps)(CheckoutScreen);
