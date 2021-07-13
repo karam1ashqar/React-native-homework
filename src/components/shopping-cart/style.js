@@ -16,7 +16,7 @@ export const styles = StyleSheet.create({
     },
     badge: {
         fontSize: 18, 
-        fontFamily: "Merienda-Regular"
+        fontFamily: "ZenLoop-Regular-Regular"
     },
     container: { 
         alignItems: 'center', 

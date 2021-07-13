@@ -2,125 +2,125 @@
   "categories": [
     {
       "id": 0,
-      "name": "Italian food",
-      "image": "https://static.onecms.io/wp-content/uploads/sites/23/2020/06/23/italian-food-2000.jpg",
+      "name": "Pizza",
+      "image": "https://media.bizj.us/view/img/11910386/pizzahut*800xx1200-675-0-113.jpg",
       "products": [
         {
           "id": 0,
-          "image": "https://www.delonghi.com/Global/recipes/multifry/pizza_fresca.jpg",
-          "name": "Pizza",
-          "price": 69
+          "image": "https://media-cdn.tripadvisor.com/media/photo-s/1b/b5/0e/a5/pizza-hut-belfield.jpg",
+          "name": "Pizza hut",
+          "price": 50
         },
         {
           "id": 1,
-          "image": "https://www.delonghi.com/Global/recipes/multifry/pizza_fresca.jpg",
-          "name": "Pizza I",
-          "price": 25
+          "image": "https://pbs.twimg.com/media/Ds4H_XPX4AER5pr.jpg",
+          "name": "Pizza Dominos",
+          "price": 51
         },
         {
           "id": 2,
           "image": "https://www.delonghi.com/Global/recipes/multifry/pizza_fresca.jpg",
-          "name": "Pizza II",
-          "price": 18
+          "name": "Pizza Fresca",
+          "price": 52
         },
         {
           "id": 3,
-          "image": "https://www.delonghi.com/Global/recipes/multifry/pizza_fresca.jpg",
-          "name": "Pizza III",
-          "price": 14
+          "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyvUlShtbPCOFF9qWxLnq6ea5SrIYDb2l_rg&usqp=CAU",
+          "name": "Pizza Vegan",
+          "price": 53
         }
       ]
     },
     {
       "id": 1,
-      "name": "Mexican food",
-      "image": "https://cdn.cheapism.com/images/Budget_Friendly_Mexican_Dishes.2e16d0ba.fill-1440x605.jpg",
+      "name": "Street Food",
+      "image": "https://bloximages.newyork1.vip.townnews.com/nola.com/content/tncms/assets/v3/editorial/1/4a/14a3d0da-e2d4-561b-b70f-2f9adf19440a/5dd767b6f14b8.image.jpg?crop=1568%2C1176%2C97%2C0&resize=1568%2C1176&order=crop%2Cresize",
       "products": [
         {
           "id": 0,
-          "image": "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chilaquiles-d90d64c.jpg?webp=true&quality=90&resize=620%2C310",
-          "name": "Chilaquiles",
-          "price": 69
+          "image": "https://bloximages.newyork1.vip.townnews.com/nola.com/content/tncms/assets/v3/editorial/1/4a/14a3d0da-e2d4-561b-b70f-2f9adf19440a/5dd767b6f14b8.image.jpg?crop=1568%2C1176%2C97%2C0&resize=1568%2C1176&order=crop%2Cresize",
+          "name": "Shawarma",
+          "price": 50
         },
         {
           "id": 1,
-          "image": "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chilaquiles-d90d64c.jpg?webp=true&quality=90&resize=620%2C310",
-          "name": "Chilaquiles I",
-          "price": 25
+          "image": "https://www.thespruceeats.com/thmb/MeKAOV6yvzVhHqj10-C2da3xuNk=/3000x1687/smart/filters:no_upscale()/what-is-falafel-2355693-Hero_01-ba33428ae8704932ba4e43b526bb81ff.jpg",
+          "name": "Falafel",
+          "price": 51
         },
         {
           "id": 2,
-          "image": "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chilaquiles-d90d64c.jpg?webp=true&quality=90&resize=620%2C310",
-          "name": "Chilaquiles II",
-          "price": 18
+          "image": "https://tappersia.com/wp-content/uploads/2020/06/jooje-kebab.jpg",
+          "name": "Kabab",
+          "price": 52
         },
         {
           "id": 3,
-          "image": "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chilaquiles-d90d64c.jpg?webp=true&quality=90&resize=620%2C310",
-          "name": "Chilaquiles III",
-          "price": 14
+          "image": "https://static.toiimg.com/photo/75690366.cms",
+          "name": "Hotdog",
+          "price": 55
         }
       ]
     },
     {
       "id": 2,
-      "name": "Mediterranean food",
+      "name": "Recommended dishes",
       "image": "https://media-cdn.tripadvisor.com/media/photo-s/16/72/7f/07/mediterranean-bento-box.jpg",
       "products": [
         {
           "id": 0,
-          "image": "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chilaquiles-d90d64c.jpg?webp=true&quality=90&resize=620%2C310",
-          "name": "Hummus",
-          "price": 69
+          "image": "https://www.foodik.co.il/wp-content/uploads/2020/10/GreenShakshukaRecipe.jpg",
+          "name": "Eggs",
+          "price": 40
         },
         {
           "id": 1,
-          "image": "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chilaquiles-d90d64c.jpg?webp=true&quality=90&resize=620%2C310",
-          "name": "Hummus I",
-          "price": 25
+          "image": "https://www.srugim.co.il/i/wp-content/uploads/2018/11/shutterstock_410518456__w645h390q80.jpg",
+          "name": "Soup",
+          "price": 60
         },
         {
           "id": 2,
-          "image": "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chilaquiles-d90d64c.jpg?webp=true&quality=90&resize=620%2C310",
-          "name": "Hummus II",
-          "price": 18
+          "image": "https://st1.foodsd.co.il/Images/Articles/xxl/1fbgdzs2w8zkmsfm.jpg",
+          "name": "Chicken legs",
+          "price": 90
         },
         {
           "id": 3,
           "image": "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chilaquiles-d90d64c.jpg?webp=true&quality=90&resize=620%2C310",
-          "name": "Hummus III",
-          "price": 14
+          "name": "Pasta",
+          "price": 59
         }
       ]
     },
     {
       "id": 3,
-      "name": "Burgers",
-      "image": "https://images.jpost.com/image/upload/f_auto,fl_lossy/t_JM_TopStoryFaceDetect/474391",
+      "name": "Dishes",
+      "image": "https://c.ndtvimg.com/2020-05/9iuj3h1g_indian-food_625x300_19_May_20.jpg",
       "products": [
         {
           "id": 0,
-          "image": "https://hips.hearstapps.com/hmg-prod/images/190416-chicken-burger-082-1556204252.jpg",
-          "name": "Burger",
-          "price": 69
+          "image": "https://lazeezaa.com/assets/dubai-kabab.jpg",
+          "name": "Beef",
+          "price": 72
         },
         {
           "id": 1,
-          "image": "https://hips.hearstapps.com/hmg-prod/images/190416-chicken-burger-082-1556204252.jpg",
-          "name": "Burger I",
-          "price": 25
+          "image": "https://lazeezaa.com/assets/dubai-shnitzel.jpg",
+          "name": "Shnitzel",
+          "price": 90
         },
         {
           "id": 2,
-          "image": "https://hips.hearstapps.com/hmg-prod/images/190416-chicken-burger-082-1556204252.jpg",
-          "name": "Burger II",
-          "price": 18
+          "image": "https://www.capottmarim.co.il/wp-content/uploads/2019/06/%D7%92%D7%9C%D7%A8%D7%99%D7%94_%D7%A8%D7%90%D7%A9%D7%99%D7%AA__3-1024x683.jpg",
+          "name": "Steak",
+          "price": 52
         },
         {
           "id": 3,
-          "image": "https://hips.hearstapps.com/hmg-prod/images/190416-chicken-burger-082-1556204252.jpg",
-          "name": "Burger III",
-          "price": 14
+          "image": "https://lazeezaa.com/assets/dubai-goose.jpeg",
+          "name": "Goose",
+          "price": 58
         }
       ]
     }

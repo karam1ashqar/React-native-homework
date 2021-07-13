@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {View, Text, ScrollView, Button, TextInput} from 'react-native'
+import {View, Text, ScrollView, Button, TextInput, TouchableOpacity} from 'react-native'
 import {connect} from 'react-redux';
 import * as _ from 'lodash';
 import {styles} from './style';
@@ -7,18 +7,54 @@ import {styles} from './style';
 const CheckoutScreen = (props) => {
     const [totalAmount, setTotalAmount] = useState(0);
     const [details, setDetails] = useState({
-        firstName: '',
-        lastName: '',
-        email: '',
-        phoneNumber: '',
-        country: '',
-        city: '',
-        address: '',
-        cardHolder: '',
-        id: '',
-        cardNumber: '',
-        expDate: '',
-        cvv: ''
+        firstName: {
+            placeholder: "What's your first name?",
+            value: ''
+        },
+        lastName: {
+            placeholder: "What's your last name?",
+            value: ''
+        },
+        city: {
+            placeholder: "What's your city?",
+            value: ''
+        },
+        address: {
+            placeholder: "What's your address?", 
+            value: ''
+        },
+        phone: {
+            placeholder: "What's your phone number?",
+            value: ''
+        },
+        country: {
+            placeholder: "What's your country?",
+            value: ''
+        },
+        email: {
+            placeholder: "What's your emaiol address?",
+            value: ''
+        },
+        cardName: {
+            placeholder: "What's the name on card?",
+            value: ''
+        },
+        id: {
+            placeholder: "What's your social security?",
+            value: ''
+        },
+        exp: {
+            placeholder: "What's the expiration date on the card?",
+            value: ''
+        },
+        cc: {
+            placeholder: "What's your card number?",
+            value: ''
+        },
+        cvv: {
+            placeholder: "What's your card cvv?",
+            value: ''
+        },
     });
     
     const getTotalAmount = () => {
@@ -102,23 +138,23 @@ const CheckoutScreen = (props) => {
     }
 
     const renderInput = (type, index) => {
-
         return (
             <View style={styles.inputWrapper} key={`type-${type}-${index}`}>
-                <Text style={styles.text}>{type}* :</Text>
-                <TextInput placeholderTextColor="grey" style={styles.textInput} onChangeText={onChangeText(type)} value={details[type]} placeholder={type} />
+                <TextInput placeholderTextColor="grey" style={styles.textInput} onChangeText={onChangeText(type)} value={details[type].value} placeholder={details[type].placeholder} />
             </View>
         )
     }
 
     return (
-        <View>
+        <View style={{flex: 1}}>
+            {!!totalAmount && <Text style={{textAlign: 'center', padding: 10}}>Price to pay: {totalAmount}$</Text>}
             <ScrollView contentContainerStyle={styles.container}>
-                {!!totalAmount && <Text>Total amount: {totalAmount}$</Text>}
                 {Object.keys(details).map((key, index) => (
                     renderInput(key, index)
                 ))}
-                <Button style={styles.buyButton} onPress={onPurchase} title="Purchase" />
+                <TouchableOpacity style={styles.buyButton} onPress={onPurchase} >
+                    <Text style={{textAlign: 'center', color: 'white'}}>Buy now</Text>
+                </TouchableOpacity>
             </ScrollView>
         </View>
 

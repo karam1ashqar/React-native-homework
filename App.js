@@ -28,7 +28,7 @@ const App = () => {
 const AppComponent = (props) => {
   const headerRight = () => <ShoppingCartIcon badge={_.get(props, 'cart.length', 0)} />
   const options = { headerRight };
-  const screenOptions = { headerTitleAlign: 'center' };
+  const screenOptions = { headerTitleAlign: 'center', };
 
   return (
     <NavigationContainer>

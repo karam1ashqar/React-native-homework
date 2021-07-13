@@ -36,25 +36,34 @@ const ProductComponent = (props) => {
             <View style={styles.imageContainer}>
                 <Image source={{ uri: product.image }} style={styles.image} resizeMode={'cover'}/>
             </View>
-            <View style={styles.titleContainer}>
-                <Text style={styles.productName}>{product.name}</Text>
+            <View>
+            <View style={{flexDirection: 'row',  marginBottom: 10, justifyContent: 'space-between'}}>
+                <View style={styles.titleContainer}>
+                    <Text style={styles.productName}>{_.upperCase(_.get(product, 'name'))}</Text>
+                </View>
+                {!_.isEmpty(product) && (
+                    <View style={styles.buyButtonWrapper}>
+                        <TouchableOpacity onPress={addProductToCart} style={styles.buyButton}>
+                            <Text style={styles.addToCartText}>Add to cart</Text>
+                            <ShoppingCartIcon noCart />
+                        </TouchableOpacity>
+                    </View>
+                )}
             </View>
             {!_.isEmpty(product) && (
-                <Text style={styles.productDesc}>
-                    <Text style={styles.shippingPrice}>PRICE: ${product.price} , SHIP: ${product.price * 0.15} , TOTAL: ${product.price + product.price * 0.15}</Text>
-                </Text>
+                <>
+                    <Text style={styles.productDesc}>
+                        <Text style={styles.shippingPrice}>PRICE: ${product.price}</Text>
+                    </Text>
+                    <Text style={[styles.shippingPrice, styles.productDesc]}>SHIP: ${product.price * 0.15}</Text>
+                    <Text style={[styles.shippingPrice, styles.productDesc]}>TOTAL: ${product.price + product.price * 0.15}</Text>
+                </>
+                
             )}
+            </View>
             <View style={styles.loadingWrapper}>
                 <SpinnerComponent isLoading={loading}/>
             </View>
-            {!_.isEmpty(product) && (
-                <View style={styles.buyButtonWrapper}>
-                    <TouchableOpacity onPress={addProductToCart} style={styles.buyButton}>
-                        <Text style={styles.addToCartText}>Add to cart</Text>
-                        <ShoppingCartIcon noCart />
-                    </TouchableOpacity>
-                </View>
-            )}
         </ScrollView>
     );
 }

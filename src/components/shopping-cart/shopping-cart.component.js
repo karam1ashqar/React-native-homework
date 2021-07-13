@@ -9,7 +9,7 @@ export const ShoppingCartIcon = (props) => {
 
     const navigateToCart = () => {
         if( !props.noCart && props.badge > 0 ) {
-            navigation.navigate('CheckoutScreen');
+            navigation.navigate('BasketScreen');
         }
     }
     return (

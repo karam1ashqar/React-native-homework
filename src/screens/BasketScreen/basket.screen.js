@@ -13,14 +13,16 @@ const BasketScreen = (props) => {
     const [totalAmount, setTotalAmount] = useState(0);
 
     const renderProduct = ({item, index}) => {
+        if( !item ) {
+            return null;
+        }
         return (
             <View key={`category-${index}`} style={styles.listItem}>
                 <View style={styles.productImageWrapper}>
-                    <Image source={{uri: item.img}} style={styles.productImage}/>
+                    <Image source={{uri: item.image}} style={styles.productImage}/>
                 </View>
                 <View style={styles.productDetails}>
-                    <Text style={styles.title}>{item.title}</Text>
-                    <Text style={styles.price}>{item.price}$</Text>
+                    <Text style={styles.title}>{item.name} - {item.price}$</Text>
                 </View>
             </View>
         )   
@@ -36,7 +38,7 @@ const BasketScreen = (props) => {
         _.get(props, 'productsCart', []).forEach(productInCart => {
             _.get(props, 'products', []).forEach(category => {
                 if( _.get(category, 'id') === _.get(productInCart, 'categoryId') ) {
-                    currentProductsInCart.push(_.get(category, `.products[${productInCart.productId}]`))
+                    currentProductsInCart.push(_.get(category, `products[${productInCart.productId}]`))
                 }
             })
         })
@@ -71,20 +73,13 @@ const BasketScreen = (props) => {
     }
 
     const goToCheckout = () => {
-        props.navigation.navigate('CheckoutComponent', {couponCode: COUPON_CODES[couponCode]})
+        props.navigation.navigate('CheckoutScreen', {couponCode: COUPON_CODES[couponCode]})
     }
 
     const onChangeCouponCodeText = text => setCouponCode(text);
 
     return (
         <View style={styles.container}>
-            <View style={styles.header}>
-                <Image source={require('../../assets/images/header.jpeg')} style={styles.headerImage} />
-                <View style={styles.overlayBlack} />
-                <View style={styles.overlayView}>
-                    <Text style={styles.titleInOverlay}>Products that were added to cart</Text>
-                </View>
-            </View>
             <FlatList 
                 data={productsInCart}
                 style={styles.list}
@@ -93,10 +88,11 @@ const BasketScreen = (props) => {
             />
             <View style={styles.textInputContainer}>
                 <TextInput value={couponCode} onChangeText={onChangeCouponCodeText} placeholderTextColor="grey" style={styles.input} placeholder="Coupon code" />
-                <Button onPress={checkCouponCode} title="Check coupon code" />
             </View>
-            <Text style={styles.productDetails}>Total amount: {totalAmount}$</Text>
-            <Button onPress={goToCheckout} title="Go to checkout" />
+                            <Button onPress={checkCouponCode} title="Apply coupon" />
+
+            <Text style={styles.productDetails}>FINAL PRICE: {totalAmount}$</Text>
+            <Button onPress={goToCheckout} title="Checkout" />
         </View>
     )
 }
